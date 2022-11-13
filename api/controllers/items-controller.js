@@ -5,82 +5,93 @@ const Product = db.products
 const Receipt = db.receipts
 
 const list = async (req, res) => {
-  const products = await Product.findAll();
+  const items = await Item.findAll({
+    include: [
+      {
+        model: Product,
+        as: 'productItemReceipt'
+      },
+      {
+        model: Receipt,
+        as: 'receiptItemReceipt'
+      },
+    ]
+  });
 
-  return res.status(201).json({ products })
+  return res.status(201).json({ items })
 }
 
 const show = async (req, res) => {
   const { id } = req.params;
-  const product = await Product.findByPk(id)
+  const item = await Item.findByPk(id, {
+    include: [
+      {
+        model: Product,
+        as: 'productItemReceipt'
+      },
+      {
+        model: Receipt,
+        as: 'receiptItemReceipt'
+      },
+    ]
+  })
 
-  return res.status(200).json({ product })
+  return res.status(200).json({ item })
 }
 
 const create = async (req, res) => {
   try {
-    const { description, manufacturer, unitMeasure, descriptionUnitMeasure, isActive } = req.body;
+    const { unitary, quantity, value, productId, receiptId } = req.body;
 
-    function makeid(length) {
-      var result           = '';
-      var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      var charactersLength = characters.length;
-      for ( var i = 0; i < length; i++ ) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength)).toUpperCase();
-      }
-      return result;
-    }
-
-    await Product.create({
-      code: makeid(6),
-      description,
-      manufacturer,
-      unitMeasure,
-      descriptionUnitMeasure,
-      isActive
+    await Item.create({
+      unitary,
+      quantity,
+      value,
+      productId,
+      receiptId
     })
 
-    return res.status(200).json({ success: "Product created successfully!" })
+    return res.status(201).json({ success: "Item created successfully!" })
 
   } catch (err) {
     console.error(err)
-    return res.status(400).json({ error: "Failed to create Product!" })
+    return res.status(400).json({ error: "Failed to create Item!" })
   }
 }
 
 const update = async (req, res) => {
   try {
     const { id } = req.params;
-    const { description, manufacturer, unitMeasure, descriptionUnitMeasure, isActive } = req.body;
+    const { unitary, quantity, value, productId, receiptId } = req.body;
 
-    await Product.update({
-      description,
-      manufacturer,
-      unitMeasure,
-      descriptionUnitMeasure,
-      isActive
-    },{ where: { id } })
+    await Item.update({
+      unitary,
+      quantity,
+      value,
+      productId,
+      receiptId
+    }, { where: { id } })
 
-    return res.status(200).json({ success: "Product updated successfully!" })
+    return res.status(200).json({ success: "Item updated successfully!" })
 
   } catch (err) {
     console.error(err)
-    return res.status(400).json({ error: "Failed to update Product!" })
+    return res.status(400).json({ error: "Failed to update Item!" })
   }
 }
 
 const destroy = async (req, res) => {
   try {
     const { id } = req.params;
-    const product = await Product.findByPk(id);
+    const item = await Item.findByPk(id);
 
-    await product.destroy();
+    await item.destroy();
 
-    return res.status(200).json({ success: "Product deleted successfully!" })
+    return res.status(200).json({ success: "Item deleted successfully!" })
 
   } catch (err) {
     console.error(err.message)
-    return res.status(400).json({ error: "Failed to deleted Product!" })
+    return res.status(400).json({ error: "Failed to deleted Item!" })
   }
 }
 

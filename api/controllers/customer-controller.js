@@ -18,16 +18,34 @@ const show = async (req, res) => {
 const create = async (req, res) => {
   try {
     const {
-      name, registration, contactEmail, contactNumber,
-      cep, address, number, district, city, uf, isActive
+      name,
+      registration,
+      contactEmail,
+      contactNumber,
+      cep,
+      address,
+      number,
+      district,
+      city,
+      uf,
+      isActive
     } = req.body;
 
     await Costumer.create({
-      name, registration, contactEmail, contactNumber,
-      cep, address, number, district, city, uf, isActive
+      name,
+      registration,
+      contactEmail,
+      contactNumber,
+      cep,
+      address,
+      number,
+      district,
+      city,
+      uf,
+      isActive
     })
 
-    return res.status(200).json({ success: "Costumer created successfully!" })
+    return res.status(201).json({ success: "Costumer created successfully!" })
 
   } catch (err) {
     console.error(err.message)
@@ -39,14 +57,32 @@ const update = async (req, res) => {
   try {
     const { id } = req.params;
     const {
-      name, registration, contactName, contactEmail, contactNumber,
-      cep, address, number, district, city, uf, isActive
+      name,
+      registration,
+      contactEmail,
+      contactNumber,
+      cep,
+      address,
+      number,
+      district,
+      city,
+      uf,
+      isActive
     } = req.body;
 
     await Costumer.update({
-      name, registration, contactName, contactEmail, contactNumber,
-      cep, address, number, district, city, uf, isActive
-    },{ where: { id } })
+      name,
+      registration,
+      contactEmail,
+      contactNumber,
+      cep,
+      address,
+      number,
+      district,
+      city,
+      uf,
+      isActive
+    }, { where: { id } })
 
     return res.status(200).json({ success: "Costumer updated successfully!" })
 

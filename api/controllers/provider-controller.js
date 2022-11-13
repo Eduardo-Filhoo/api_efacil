@@ -18,16 +18,34 @@ const show = async (req, res) => {
 const create = async (req, res) => {
   try {
     const {
-      name, registration, contactName, contactNumber,
-      cep, address, number, district, city, uf, isActive
+      name,
+      registration,
+      contactName,
+      contactNumber,
+      cep,
+      address,
+      number,
+      district,
+      city,
+      uf,
+      isActive
     } = req.body;
 
     await Provider.create({
-      name, registration, contactName, contactNumber,
-      cep, address, number, district, city, uf, isActive
+      name,
+      registration,
+      contactName,
+      contactNumber,
+      cep,
+      address,
+      number,
+      district,
+      city,
+      uf,
+      isActive
     })
 
-    return res.status(200).json({ success: "Provider created successfully!" })
+    return res.status(201).json({ success: "Provider created successfully!" })
 
   } catch (err) {
     console.error(err.message)
@@ -39,14 +57,32 @@ const update = async (req, res) => {
   try {
     const { id } = req.params;
     const {
-      name, registration, contactName, contactEmail, contactNumber,
-      cep, address, number, district, city, uf, isActive
+      name,
+      registration,
+      contactName,
+      contactNumber,
+      cep,
+      address,
+      number,
+      district,
+      city,
+      uf,
+      isActive
     } = req.body;
 
     await Provider.update({
-      name, registration, contactName, contactEmail, contactNumber,
-      cep, address, number, district, city, uf, isActive
-    },{ where: { id } })
+      name,
+      registration,
+      contactName,
+      contactNumber,
+      cep,
+      address,
+      number,
+      district,
+      city,
+      uf,
+      isActive
+    }, { where: { id } })
 
     return res.status(200).json({ success: "Provider updated successfully!" })
 

@@ -14,7 +14,7 @@ db.movements = require('../../models/Movement')(sequelize, DataTypes)
 db.providers = require('../../models/Provider')(sequelize, DataTypes)
 db.customers = require('../../models/Customer')(sequelize, DataTypes)
 
-db.sequelize.sync({ force: true })
+db.sequelize.sync({ force: false })
 .then(() => {
   console.log('[+] Successfully syncing a database')
 })

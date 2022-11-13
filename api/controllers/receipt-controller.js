@@ -1,16 +1,49 @@
 const db = require('../database/connections/sync')
 
-const Receipt = db.customers
+const Receipt = db.receipts
+const Provider = db.providers
+const Customer = db.customers
+const Item = db.itemsReceipts
 
 const list = async (req, res) => {
-  const receipts = await Receipt.findAll();
+  const receipts = await Receipt.findAll({
+    include: [
+      {
+        model: Provider,
+        as: 'receiptProvider'
+      },
+      {
+        model: Customer,
+        as: 'receiptCustomer'
+      },
+      {
+        model: Item,
+        as: 'itemReceiptReceipt'
+      },
+    ]
+  });
 
   return res.status(201).json({ receipts })
 }
 
 const show = async (req, res) => {
   const { id } = req.params;
-  const receipt = await Receipt.findByPk(id)
+  const receipt = await Receipt.findByPk(id, {
+    include: [
+      {
+        model: Provider,
+        as: 'receiptProvider'
+      },
+      {
+        model: Customer,
+        as: 'receiptCustomer'
+      },
+      {
+        model: Item,
+        as: 'itemReceiptReceipt'
+      },
+    ]
+  })
 
   return res.status(200).json({ receipt })
 }
@@ -23,6 +56,8 @@ const create = async (req, res) => {
       transmission,
       value,
       entryDate,
+      customerId,
+      providerId
     } = req.body;
 
     var newTransmission = transmission.split('.').reverse().join('-')
@@ -34,9 +69,11 @@ const create = async (req, res) => {
       transmission: newTransmission,
       value,
       entryDate: newEntryDate,
+      customerId,
+      providerId
     })
 
-    return res.status(200).json({ success: "Receipt created successfully!" })
+    return res.status(201).json({ success: "Receipt created successfully!" })
 
   } catch (err) {
     console.error(err.message)
@@ -47,20 +84,34 @@ const create = async (req, res) => {
 const update = async (req, res) => {
   try {
     const { id } = req.params;
+
     const {
-      name, registration, contactName, contactEmail, contactNumber,
-      cep, address, number, district, city, uf, isActive
+      doc,
+      serie,
+      transmission,
+      value,
+      entryDate,
+      customerId,
+      providerId
     } = req.body;
 
+    var newTransmission = transmission.split('.').reverse().join('-')
+    var newEntryDate = entryDate.split('.').reverse().join('-')
+
     await Receipt.update({
-      name, registration, contactName, contactEmail, contactNumber,
-      cep, address, number, district, city, uf, isActive
-    },{ where: { id } })
+      doc,
+      serie,
+      transmission: newTransmission,
+      value,
+      entryDate: newEntryDate,
+      customerId,
+      providerId
+    }, { where: { id } })
 
     return res.status(200).json({ success: "Receipt updated successfully!" })
 
   } catch (err) {
-    console.error(err)
+    console.error(err.message)
     return res.status(400).json({ error: "Failed to update Receipt!" })
   }
 }

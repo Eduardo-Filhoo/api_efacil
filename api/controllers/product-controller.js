@@ -38,7 +38,7 @@ const create = async (req, res) => {
       isActive
     })
 
-    return res.status(200).json({ success: "Product created successfully!" })
+    return res.status(201).json({ success: "Product created successfully!" })
 
   } catch (err) {
     console.error(err)
@@ -57,7 +57,7 @@ const update = async (req, res) => {
       unitMeasure,
       descriptionUnitMeasure,
       isActive
-    },{ where: { id } })
+    }, { where: { id } })
 
     return res.status(200).json({ success: "Product updated successfully!" })
 
