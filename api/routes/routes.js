@@ -3,7 +3,8 @@ const productController = require('../controllers/product-controller')
 const costumerController = require('../controllers/customer-controller')
 const providerController = require('../controllers/provider-controller')
 const receiptController = require('../controllers/receipt-controller')
-const itemController = require('../controllers/items-controller')
+const itemController = require('../controllers/item-controller')
+const movementController = require('../controllers/movement-contoller')
 
 // Products
 routes.get('/products', productController.list)
@@ -26,18 +27,25 @@ routes.post('/add-provider', providerController.create)
 routes.patch('/provider/:id', providerController.update)
 routes.delete('/provider/:id', providerController.destroy)
 
-// Products
+// Receipts
 routes.get('/receipts', receiptController.list)
 routes.get('/receipt/:id', receiptController.show)
 routes.post('/add-receipt', receiptController.create)
 routes.patch('/receipt/:id', receiptController.update)
 routes.delete('/receipt/:id', receiptController.destroy)
 
-// Products
+// Items
 routes.get('/items', itemController.list)
 routes.get('/item/:id', itemController.show)
 routes.post('/add-item', itemController.create)
 routes.patch('/item/:id', itemController.update)
 routes.delete('/item/:id', itemController.destroy)
+
+// Movements
+routes.get('/movements', movementController.list)
+routes.get('/movement/:id', movementController.show)
+routes.post('/add-movement', movementController.create)
+routes.patch('/movement/:id', movementController.update)
+routes.delete('/movement/:id', movementController.destroy)
 
 module.exports = routes;

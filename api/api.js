@@ -13,4 +13,9 @@ api.use(express.urlencoded({ extended: true }))
 // Routes
 api.use(routes)
 
+// Erros
+api.use((req, res, next) => {
+  res.status(404).json({ error: "Página não Encontrada" })
+});
+
 module.exports = api
