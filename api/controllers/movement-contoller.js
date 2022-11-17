@@ -30,7 +30,34 @@ const show = async (req, res) => {
   return res.status(200).json({ movement })
 }
 
-const create = async (req, res) => {
+const createEntry = async (req, res) => {
+  try {
+    const {
+      type,
+      receiptId,
+      entryDate
+    } = req.body;
+
+    await Movement.create({
+      type,
+      receiptId
+    })
+
+    var newEntryDate = entryDate.split('/').reverse().join('-')
+
+    await Receipt.update({
+      entryDate: newEntryDate
+    }, { where: { id: receiptId } })
+
+    return res.status(201).json({ success: "Movement created successfully!" })
+
+  } catch (err) {
+    console.error(err)
+    return res.status(400).json({ error: "Failed to create Movement!" })
+  }
+}
+
+const createDeparture = async (req, res) => {
   try {
     const {
       type,
@@ -57,7 +84,35 @@ const create = async (req, res) => {
   }
 }
 
-const update = async (req, res) => {
+const updateEntry = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const {
+      type,
+      receiptId,
+      entryDate
+    } = req.body;
+
+    var newEntryDate = entryDate.split('/').reverse().join('-')
+
+    await Movement.update({
+      type,
+      receiptId
+    }, { where: { id } })
+
+    await Receipt.update({
+      entryDate: newEntryDate
+    }, { where: { id: receiptId} })
+
+    return res.status(200).json({ success: "Movement updated successfully!" })
+
+  } catch (err) {
+    console.error(err)
+    return res.status(400).json({ error: "Failed to update Movement!" })
+  }
+}
+
+const updateDeparture = async (req, res) => {
   try {
     const { id } = req.params;
     const {
@@ -103,7 +158,9 @@ const destroy = async (req, res) => {
 module.exports = {
   list,
   show,
-  create,
-  update,
+  createEntry,
+  createDeparture,
+  updateEntry,
+  updateDeparture,
   destroy
 }

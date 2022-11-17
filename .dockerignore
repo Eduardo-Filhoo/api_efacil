@@ -1,0 +1,13 @@
+# Folders
+node_modules/
+api/web/*
+
+# Files
+.vscode
+.editorconfig
+.env.example
+.nvmrc
+.gitignore
+Dockerfile
+.dockerignore
+README.md

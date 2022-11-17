@@ -2,10 +2,10 @@
   "name": "efacil",
   "version": "1.0.0",
   "description": "Estoque Facil",
-  "main": "server/server.js",
+  "main": "api/server/server.js",
   "scripts": {
-    "nodemon": "nodemon --ignore '/node_modules' server/server.js",
-    "start": "node server/server.js"
+    "nodemon": "nodemon --ignore '/node_modules' api/server/server.js",
+    "start": "node api/server/server.js"
   },
   "keywords": [],
   "author": "Eduardo Filho",

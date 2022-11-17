@@ -1,6 +1,6 @@
 const routes = require("express").Router();
 const productController = require('../controllers/product-controller')
-const costumerController = require('../controllers/customer-controller')
+const customerController = require('../controllers/customer-controller')
 const providerController = require('../controllers/provider-controller')
 const receiptController = require('../controllers/receipt-controller')
 const itemController = require('../controllers/item-controller')
@@ -13,12 +13,12 @@ routes.post('/add-product', productController.create)
 routes.patch('/product/:id', productController.update)
 routes.delete('/product/:id', productController.destroy)
 
-// Costumers
-routes.get('/costumers', costumerController.list)
-routes.get('/costumer/:id', costumerController.show)
-routes.post('/add-costumer', costumerController.create)
-routes.patch('/costumer/:id', costumerController.update)
-routes.delete('/costumer/:id', costumerController.destroy)
+// Custumers
+routes.get('/customers', customerController.list)
+routes.get('/customer/:id', customerController.show)
+routes.post('/add-customer', customerController.create)
+routes.patch('/customer/:id', customerController.update)
+routes.delete('/customer/:id', customerController.destroy)
 
 // Providers
 routes.get('/providers', providerController.list)
@@ -44,8 +44,10 @@ routes.delete('/item/:id', itemController.destroy)
 // Movements
 routes.get('/movements', movementController.list)
 routes.get('/movement/:id', movementController.show)
-routes.post('/add-movement', movementController.create)
-routes.patch('/movement/:id', movementController.update)
+routes.post('/add-entry', movementController.createEntry)
+routes.post('/add-departure', movementController.createDeparture)
+routes.patch('/entry/:id', movementController.updateEntry)
+routes.patch('/departure/:id', movementController.updateDeparture)
 routes.delete('/movement/:id', movementController.destroy)
 
 module.exports = routes;

@@ -3,6 +3,8 @@ const db = require('../services/sequelize')
 const Item = db.itemsReceipts
 const Product = db.products
 const Receipt = db.receipts
+const Customer = db.customers
+const Provider = db.providers
 
 const list = async (req, res) => {
   const items = await Item.findAll({
@@ -10,11 +12,17 @@ const list = async (req, res) => {
       {
         model: Product,
         as: 'productItemReceipt'
-      },
-      {
+      }, {
         model: Receipt,
-        as: 'receiptItemReceipt'
-      },
+        as: 'receiptItemReceipt',
+        include: [{
+          model: Customer,
+          as: 'receiptCustomer',
+        }, {
+          model: Provider,
+          as: 'receiptProvider',
+        }]
+      }
     ]
   });
 
@@ -28,11 +36,17 @@ const show = async (req, res) => {
       {
         model: Product,
         as: 'productItemReceipt'
-      },
-      {
+      }, {
         model: Receipt,
-        as: 'receiptItemReceipt'
-      },
+        as: 'receiptItemReceipt',
+        include: [{
+          model: Customer,
+          as: 'receiptCustomer',
+        }, {
+          model: Provider,
+          as: 'receiptProvider',
+        }]
+      }
     ]
   })
 

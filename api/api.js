@@ -11,7 +11,7 @@ api.use(express.json());
 api.use(express.urlencoded({ extended: true }))
 
 // Routes
-api.use(routes)
+api.use('/api/', routes)
 
 // Erros
 api.use((req, res, next) => {

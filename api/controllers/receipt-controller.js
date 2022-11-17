@@ -55,20 +55,17 @@ const create = async (req, res) => {
       serie,
       transmission,
       total,
-      entryDate,
       customerId,
       providerId
     } = req.body;
 
     var newTransmission = transmission.split('/').reverse().join('-')
-    var newEntryDate = entryDate.split('/').reverse().join('.')
 
     await Receipt.create({
       doc,
       serie,
       transmission: newTransmission,
       total,
-      entryDate: newEntryDate,
       customerId,
       providerId
     })
@@ -90,20 +87,17 @@ const update = async (req, res) => {
       serie,
       transmission,
       total,
-      entryDate,
       customerId,
       providerId
     } = req.body;
 
     var newTransmission = transmission.split('/').reverse().join('-')
-    var newEntryDate = entryDate.split('/').reverse().join('-')
 
     await Receipt.update({
       doc,
       serie,
       transmission: newTransmission,
       total,
-      entryDate: newEntryDate,
       customerId,
       providerId
     }, { where: { id } })
