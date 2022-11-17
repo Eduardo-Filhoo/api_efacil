@@ -1,6 +1,6 @@
-const api = require('../api/api')
+const api = require('../api')
 const http = require('http')
-const config = require('../api/config/config')
+const config = require('../config/config')
 
 const port = config.server.port
 const server = http.createServer(api)

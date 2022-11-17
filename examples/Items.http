@@ -1,0 +1,32 @@
+### All Items
+GET http://localhost:5000/api/v1/items
+
+### Single Item
+GET http://localhost:5000/api/v1/item/:uuid
+
+### Add New Item
+POST http://localhost:5000/api/v1/add-item
+Content-Type: application/json
+
+{
+  "unitary": ,
+  "quantity": ,
+  "value": ,
+  "productId": "",
+  "receiptId": ""
+}
+
+### Update Existing Item
+PATCH http://localhost:5000/api/v1/item/:uuid
+Content-Type: application/json
+
+{
+  "unitary": ,
+  "quantity": ,
+  "value": ,
+  "productId": "",
+  "receiptId": ""
+}
+
+### Delete Existing Item
+DELETE http://localhost:5000/api/v1/item/:uuid

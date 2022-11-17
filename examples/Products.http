@@ -1,0 +1,32 @@
+### All Products
+GET http://localhost:5000/api/v1/products
+
+### Single Product
+GET http://localhost:5000/api/v1/product/uuid
+
+### Add New Product
+POST http://localhost:5000/api/v1/add-product
+Content-Type: application/json
+
+{
+  "description": "",
+  "manufacturer": "",
+  "unitMeasure": "",
+  "descriptionUnitMeasure": "",
+  "isActive": true
+}
+
+### Update Existing Product
+PATCH http://localhost:5000/api/v1/product/:uuid
+Content-Type: application/json
+
+{
+  "description": "",
+  "manufacturer": "",
+  "unitMeasure": "",
+  "descriptionUnitMeasure": "",
+  "isActive": false
+}
+
+### Delete Existing Product
+DELETE http://localhost:5000/api/v1/product/:uuid

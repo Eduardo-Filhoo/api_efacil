@@ -1,0 +1,44 @@
+### All Providers
+GET http://localhost:5000/api/v1/providers
+
+### Single Provider
+GET http://localhost:5000/api/v1/provider/uuid
+
+### Add New Provider
+POST http://localhost:5000/api/v1/add-provider
+Content-Type: application/json
+
+{
+  "name": "",
+  "registration": ,
+  "contactName": "",
+  "contactNumber": ,
+  "cep": ,
+  "address": "",
+  "number": "",
+  "district": "",
+  "city": "",
+  "uf": "",
+  "isActive": true
+}
+
+### Update Existing Provider
+PATCH http://localhost:5000/api/v1/provider/:uuid
+Content-Type: application/json
+
+{
+  "name": "",
+  "registration": ,
+  "contactName": "",
+  "contactNumber": ,
+  "cep": ,
+  "address": "",
+  "number": "",
+  "district": "",
+  "city": "",
+  "uf": "",
+  "isActive": false
+}
+
+### Delete Existing Provider
+DELETE http://localhost:5000/api/v1/provider/:uuid

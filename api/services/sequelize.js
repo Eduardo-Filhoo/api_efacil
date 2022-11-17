@@ -1,5 +1,5 @@
 const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = require('./connection')
+const sequelize = require('../database/connection')
 
 const db = {}
 
@@ -7,12 +7,12 @@ db.Sequelize = Sequelize
 db.sequelize = sequelize
 
 // Models
-db.products = require('../../models/Product')(sequelize, DataTypes)
-db.receipts = require('../../models/Receipt')(sequelize, DataTypes)
-db.itemsReceipts = require('../../models/ItemReceipt')(sequelize, DataTypes)
-db.movements = require('../../models/Movement')(sequelize, DataTypes)
-db.providers = require('../../models/Provider')(sequelize, DataTypes)
-db.customers = require('../../models/Customer')(sequelize, DataTypes)
+db.products = require('../models/Product')(sequelize, DataTypes)
+db.receipts = require('../models/Receipt')(sequelize, DataTypes)
+db.itemsReceipts = require('../models/ItemReceipt')(sequelize, DataTypes)
+db.movements = require('../models/Movement')(sequelize, DataTypes)
+db.providers = require('../models/Provider')(sequelize, DataTypes)
+db.customers = require('../models/Customer')(sequelize, DataTypes)
 
 db.sequelize.sync({ force: false })
 .then(() => {

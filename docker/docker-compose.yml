@@ -1,26 +1,29 @@
-version: '3'
+version: "3"
 services:
 
   db:
     container_name: DB_eFacil
     image: mysql:latest
     env_file:
-      - ./docker.env
+      - .env
     environment:
       MYSQL_DATABASE: ${DB_NAME}
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASS}
       MYSQL_ROOT_PASSWORD: ${ROOT_PASS}
     volumes:
-      - db_data:/var/lib/mysql
+      - db_eFacil:/var/lib/mysql
     ports:
-      - "3306:3306"
+      - "${DB_PORT}:3306"
     restart: unless-stopped
     networks:
       - efacil
-
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      timeout: 30s
+      retries: 15
 volumes:
-  db_data:
+  db_eFacil:
 
 networks:
   efacil:

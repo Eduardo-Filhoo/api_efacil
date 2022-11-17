@@ -1,4 +1,4 @@
-const db = require('../database/connections/sync')
+const db = require('../services/sequelize')
 
 const Costumer = db.customers
 
