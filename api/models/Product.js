@@ -15,10 +15,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    manufacturer: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     unitMeasure: {
       type: DataTypes.STRING(3),
       allowNull: false,
@@ -30,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     isActive: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-    },
+    }
   })
 
   return Product

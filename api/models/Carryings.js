@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
 
-  const Provider = sequelize.define("provider", {
+  const Carryings = sequelize.define("carryings", {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
@@ -56,6 +56,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   })
 
-  return Provider
+  return Carryings
 
 }

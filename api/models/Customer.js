@@ -14,11 +14,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    contactEmail: {
+    email: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    contactNumber: {
+    phone: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -49,7 +49,7 @@ module.exports = (sequelize, DataTypes) => {
     isActive: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-    },
+    }
   })
 
   return Customer
