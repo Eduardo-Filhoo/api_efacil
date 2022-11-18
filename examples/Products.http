@@ -1,32 +1,32 @@
 ### All Products
-GET http://localhost:5000/api/v1/products
+GET http://localhost:5000/api/products
 
 ### Single Product
-GET http://localhost:5000/api/v1/product/uuid
+GET http://localhost:5000/api/product/:uuid
 
 ### Add New Product
-POST http://localhost:5000/api/v1/add-product
+POST http://localhost:5000/api/product
 Content-Type: application/json
 
 {
-  "description": "",
-  "manufacturer": "",
-  "unitMeasure": "",
-  "descriptionUnitMeasure": "",
+  "description": "Notebook Acer Aspire 5 A514-54g-59bt",
+  "manufacturer": "Acer",
+  "unitMeasure": "UN",
+  "descriptionUnitMeasure": "UNIDADER",
   "isActive": true
 }
 
 ### Update Existing Product
-PATCH http://localhost:5000/api/v1/product/:uuid
+PATCH http://localhost:5000/api/product/5d366382-a455-45f2-83f6-44d0138f4e63
 Content-Type: application/json
 
 {
-  "description": "",
-  "manufacturer": "",
-  "unitMeasure": "",
-  "descriptionUnitMeasure": "",
-  "isActive": false
+  "description": "Notebook Acer Aspire 5 A514-54g-59bt",
+  "manufacturer": "Acer",
+  "unitMeasure": "UN",
+  "descriptionUnitMeasure": "UNIDADE",
+  "isActive": true
 }
 
 ### Delete Existing Product
-DELETE http://localhost:5000/api/v1/product/:uuid
+DELETE http://localhost:5000/api/product/:uuid

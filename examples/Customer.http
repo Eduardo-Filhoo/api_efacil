@@ -1,0 +1,44 @@
+### All Customers
+GET http://localhost:5000/api/customers
+
+### Single Customer
+GET http://localhost:5000/api/customer/:uuid
+
+### Add New Customer
+POST http://localhost:5000/api/customer
+Content-Type: application/json
+
+{
+  "name": "Ryan Luan Vicente Almada",
+  "registration": "88153008307",
+  "phone": "9827236445",
+  "email": "ryan.luan.almada@edbrasil.net",
+  "cep": "65143970",
+  "address": "Avenida José da Silva Calvet",
+  "number": "306",
+  "district": "Centro",
+  "city": "Bacabeira",
+  "uf": "MA",
+  "isActive": true
+}
+
+### Update Existing Customer
+PATCH http://localhost:5000/api/customer/:uuid
+Content-Type: application/json
+
+{
+  "name": "",
+  "registration": "",
+  "phone": "",
+  "email": "",
+  "cep": "",
+  "address": "",
+  "number": "",
+  "district": "",
+  "city": "",
+  "uf": "",
+  "isActive": false
+}
+
+### Delete Existing Customer
+DELETE http://localhost:5000/api/customer/:uuid

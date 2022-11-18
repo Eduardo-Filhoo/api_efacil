@@ -20,8 +20,8 @@ const create = async (req, res) => {
     const {
       name,
       registration,
-      contactEmail,
-      contactNumber,
+      email,
+      phone,
       cep,
       address,
       number,
@@ -34,8 +34,8 @@ const create = async (req, res) => {
     await Costumer.create({
       name,
       registration,
-      contactEmail,
-      contactNumber,
+      email,
+      phone,
       cep,
       address,
       number,
@@ -59,8 +59,8 @@ const update = async (req, res) => {
     const {
       name,
       registration,
-      contactEmail,
-      contactNumber,
+      email,
+      phone,
       cep,
       address,
       number,
@@ -73,8 +73,8 @@ const update = async (req, res) => {
     await Costumer.update({
       name,
       registration,
-      contactEmail,
-      contactNumber,
+      email,
+      phone,
       cep,
       address,
       number,

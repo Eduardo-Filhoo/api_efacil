@@ -1,0 +1,38 @@
+### All Entries
+GET http://localhost:5000/api/entries
+
+
+### Single Entry
+GET http://localhost:5000/api/entry/:uuid
+
+
+### Add New Entry
+POST http://localhost:5000/api/entry
+Content-Type: application/json
+
+{
+  "entryDate": "2022-11-10",
+  "total": 520.40,
+  "transport": 52.00,
+  "receipt": "000021948",
+  "carryingId": "99db7a8f-bb9d-4cc3-ae42-b98cab0ee3d4",
+  "providerId": "691fcea1-7594-4070-88b2-f0dbf3313c69"
+}
+
+
+### Update Existing Entry
+PATCH http://localhost:5000/api/entry/:uuid
+Content-Type: application/json
+
+{
+  "entryDate": "",
+  "total": "",
+  "transport": "",
+  "receipt": "",
+  "carryingId": "",
+  "providerId": ""
+}
+
+
+### Delete Existing Entry
+DELETE http://localhost:5000/api/entry/:uuid

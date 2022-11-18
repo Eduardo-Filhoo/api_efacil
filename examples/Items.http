@@ -1,32 +1,74 @@
-### All Items
-GET http://localhost:5000/api/v1/items
+### All Items Departures
+GET http://localhost:5000/api/items/departures
 
-### Single Item
-GET http://localhost:5000/api/v1/item/:uuid
 
-### Add New Item
-POST http://localhost:5000/api/v1/add-item
+### Single Item Departure
+GET http://localhost:5000/api/items/departure/:uuid
+
+
+### Add New Item Departure
+POST http://localhost:5000/api/items/departure
 Content-Type: application/json
 
 {
-  "unitary": ,
-  "quantity": ,
-  "value": ,
+  "unitary": "",
+  "quantity": "",
+  "total": "",
   "productId": "",
-  "receiptId": ""
+  "departureId": ""
 }
 
-### Update Existing Item
-PATCH http://localhost:5000/api/v1/item/:uuid
+
+### Update Existing Item Departure
+PATCH http://localhost:5000/api/items/departure/:uuid
 Content-Type: application/json
 
 {
-  "unitary": ,
-  "quantity": ,
-  "value": ,
+  "unitary": "",
+  "quantity": "",
+  "total": "",
   "productId": "",
-  "receiptId": ""
+  "departureId": ""
 }
 
-### Delete Existing Item
-DELETE http://localhost:5000/api/v1/item/:uuid
+
+### Delete Existing Item Departure
+DELETE http://localhost:5000/api/items/departure/:uuid
+
+
+# /* Entries */
+
+### All Items Entries
+GET http://localhost:5000/api/items/entries
+
+
+### Single Item Entry
+GET http://localhost:5000/api/items/entry/:uuid
+
+
+### Add New Item Entry
+POST http://localhost:5000/api/items/entry
+Content-Type: application/json
+
+{
+  "unitary": 468.40,
+  "quantity": 1,
+  "total": 468.40,
+  "productId": "5d366382-a455-45f2-83f6-44d0138f4e63",
+  "entryId": "d2a060cf-c0a9-4265-b21b-d7b5f2f052ff"
+}
+
+### Update Existing Item Entry
+PATCH http://localhost:5000/api/items/entry/:uuid
+Content-Type: application/json
+
+{
+  "unitary": "",
+  "quantity": "",
+  "total": "",
+  "productId": "",
+  "entryId": ""
+}
+
+### Delete Existing Item Entry
+DELETE http://localhost:5000/api/items/entry/:uuid

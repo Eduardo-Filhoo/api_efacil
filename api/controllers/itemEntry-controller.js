@@ -1,32 +1,24 @@
 const db = require('../services/sequelize')
 
-const Item = db.itemsReceipts
+const Item = db.itemsEntries
 const Product = db.products
-const Receipt = db.receipts
-const Customer = db.customers
-const Provider = db.providers
+const Entry = db.entries
 
 const list = async (req, res) => {
   const items = await Item.findAll({
     include: [
       {
         model: Product,
-        as: 'productItemReceipt'
-      }, {
-        model: Receipt,
-        as: 'receiptItemReceipt',
-        include: [{
-          model: Customer,
-          as: 'receiptCustomer',
-        }, {
-          model: Provider,
-          as: 'receiptProvider',
-        }]
-      }
+        as: 'productEntry'
+      },
+      {
+        model: Entry,
+        as: 'itemsEntry'
+      },
     ]
   });
 
-  return res.status(201).json({ items })
+  return res.status(200).json({ items })
 }
 
 const show = async (req, res) => {
@@ -35,18 +27,12 @@ const show = async (req, res) => {
     include: [
       {
         model: Product,
-        as: 'productItemReceipt'
-      }, {
-        model: Receipt,
-        as: 'receiptItemReceipt',
-        include: [{
-          model: Customer,
-          as: 'receiptCustomer',
-        }, {
-          model: Provider,
-          as: 'receiptProvider',
-        }]
-      }
+        as: 'productEntry'
+      },
+      {
+        model: Entry,
+        as: 'itemsEntry'
+      },
     ]
   })
 
@@ -55,14 +41,14 @@ const show = async (req, res) => {
 
 const create = async (req, res) => {
   try {
-    const { unitary, quantity, value, productId, receiptId } = req.body;
+    const { unitary, quantity, total, productId, entryId } = req.body;
 
     await Item.create({
       unitary,
       quantity,
-      value,
+      total,
       productId,
-      receiptId
+      entryId
     })
 
     return res.status(201).json({ success: "Item created successfully!" })
@@ -76,14 +62,14 @@ const create = async (req, res) => {
 const update = async (req, res) => {
   try {
     const { id } = req.params;
-    const { unitary, quantity, value, productId, receiptId } = req.body;
+    const { unitary, quantity, total, productId, entryId } = req.body;
 
     await Item.update({
       unitary,
       quantity,
-      value,
+      total,
       productId,
-      receiptId
+      entryId
     }, { where: { id } })
 
     return res.status(200).json({ success: "Item updated successfully!" })

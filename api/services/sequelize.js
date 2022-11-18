@@ -7,7 +7,7 @@ db.Sequelize = Sequelize
 db.sequelize = sequelize
 
 // Models
-db.carryings = require('../models/Carryings')(sequelize, DataTypes)
+db.carryings = require('../models/Carrying')(sequelize, DataTypes)
 db.customers = require('../models/Customer')(sequelize, DataTypes)
 db.departures = require('../models/Departure')(sequelize, DataTypes)
 db.entries = require('../models/Entry')(sequelize, DataTypes)
@@ -35,20 +35,20 @@ db.entries.belongsTo(db.carryings, { foreignKey: 'carryingId', as: 'entryCarryin
 db.carryings.hasMany(db.departures, { foreignKey: 'carryingId', as: 'carryingdeparture', onDelete: 'NO ACTION', onUpdate: 'NO ACTION' });
 db.departures.belongsTo(db.carryings, { foreignKey: 'carryingId', as: 'departureCarrying' });
 
-// Entries and items entries
-db.entries.hasMany(db.itemsEntries, { foreignKey: 'entryId', as: 'entryItem', onDelete: 'NO ACTION', onUpdate: 'NO ACTION' });
-db.itemsEntries.belongsTo(db.entries, { foreignKey: 'entryId', as: 'itemEntry' });
-
 // Departures and items departures
-db.departures.hasMany(db.itemsDepartures, { foreignKey: 'departureId', as: 'departureItem', onDelete: 'NO ACTION', onUpdate: 'NO ACTION' });
-db.itemsDepartures.belongsTo(db.departures, { foreignKey: 'departureId', as: 'itemDeparture' });
+db.departures.hasMany(db.itemsDepartures, { foreignKey: 'departureId', as: 'departureItems', onDelete: 'NO ACTION', onUpdate: 'NO ACTION' });
+db.itemsDepartures.belongsTo(db.departures, { foreignKey: 'departureId', as: 'itemsDeparture' });
+
+// Entries and items entries
+db.entries.hasMany(db.itemsEntries, { foreignKey: 'entryId', as: 'entryItems', onDelete: 'NO ACTION', onUpdate: 'NO ACTION' });
+db.itemsEntries.belongsTo(db.entries, { foreignKey: 'entryId', as: 'itemsEntry' });
 
 // Products and items departures
-db.products.hasMany(db.itemsDepartures, { foreignKey: 'productId', as: 'itemDeparture', onDelete: 'NO ACTION', onUpdate: 'NO ACTION' });
+db.products.hasMany(db.itemsDepartures, { foreignKey: 'productId', as: 'departureProduct', onDelete: 'NO ACTION', onUpdate: 'NO ACTION' });
 db.itemsDepartures.belongsTo(db.products, { foreignKey: 'productId', as: 'productDeparture' });
 
 // Products and items entries
-db.products.hasMany(db.itemsEntries, { foreignKey: 'productId', as: 'itemEntry', onDelete: 'NO ACTION', onUpdate: 'NO ACTION' });
+db.products.hasMany(db.itemsEntries, { foreignKey: 'productId', as: 'entryProduct', onDelete: 'NO ACTION', onUpdate: 'NO ACTION' });
 db.itemsEntries.belongsTo(db.products, { foreignKey: 'productId', as: 'productEntry' });
 
 // Customers and departures

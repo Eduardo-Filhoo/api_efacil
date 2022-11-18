@@ -1,0 +1,48 @@
+### All Carryings
+GET http://localhost:5000/api/carryings
+
+
+### Single Carrying
+GET http://localhost:5000/api/carrying/:uuid
+
+
+### Add New Carrying
+POST http://localhost:5000/api/carrying
+Content-Type: application/json
+
+{
+  "name": "Sérgio e Elza Mudanças Ltda",
+  "registration": "26766907000150",
+  "phone": "1927541731",
+  "email": "almoxarifado@sergioeelzamudancasltda.com.br",
+  "cep": "13873059",
+  "address": "Rua João Ferreira Varzim",
+  "number": "258",
+  "district": "Vila Valentin",
+  "city": "São João da Boa Vista",
+  "uf": "SP",
+  "isActive": true
+}
+
+
+### Update Existing Carrying
+PATCH http://localhost:5000/api/carrying/99db7a8f-bb9d-4cc3-ae42-b98cab0ee3d4
+Content-Type: application/json
+
+{
+  "name": "Sérgio e Elza Mudanças Ltda",
+  "registration": "26766907000150",
+  "phone": "1927541731",
+  "email": "almoxarifado@sergioeelzamudancasltda.com.br",
+  "cep": "13873059",
+  "address": "Rua João Ferreira Varzim",
+  "number": "258",
+  "district": "Vila Valentin",
+  "city": "São João da Boa Vista",
+  "uf": "SP",
+  "isActive": true
+}
+
+
+### Delete Existing Carrying
+DELETE http://localhost:5000/api/carrying/:uuid

@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
 
-  const Carryings = sequelize.define("carryings", {
+  const Carrying = sequelize.define("carrying", {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
@@ -11,10 +11,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     registration: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    contact: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -56,6 +52,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   })
 
-  return Carryings
+  return Carrying
 
 }

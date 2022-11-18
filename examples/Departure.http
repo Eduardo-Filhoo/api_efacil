@@ -1,0 +1,38 @@
+### All Departures
+GET http://localhost:5000/api/departures
+
+
+### Single Departure
+GET http://localhost:5000/api/departure/:uuid
+
+
+### Add New Departure
+POST http://localhost:5000/api/departure
+Content-Type: application/json
+
+{
+  "departureDate": "",
+  "total": "",
+  "transport": "",
+  "receipt": "",
+  "carryingId": "",
+  "customerId": ""
+}
+
+
+### Update Existing Departure
+PATCH http://localhost:5000/api/departure/:uuid
+Content-Type: application/json
+
+{
+  "departureDate": "",
+  "total": "",
+  "transport": "",
+  "receipt": "",
+  "carryingId": "",
+  "customerId": ""
+}
+
+
+### Delete Existing Departure
+DELETE http://localhost:5000/api/departure/:uuid
