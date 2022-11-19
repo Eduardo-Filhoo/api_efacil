@@ -24,14 +24,14 @@ const create = async (req, res) => {
       total
     } = req.body;
 
-    await Receipt.create({
+    const receipt = await Receipt.create({
       doc,
       serie,
       transmission,
       total
     })
 
-    return res.status(201).json({ success: "Receipt created successfully!" })
+    return res.status(201).json({ success: "Receipt created successfully!", id: receipt.id })
 
   } catch (err) {
     console.error(err)

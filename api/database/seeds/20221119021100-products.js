@@ -5,6 +5,7 @@ module.exports = {
     [
       {
         id: uuidv4(),
+        code: 000001,
         name: "Smart TV 43 Polegadas UHD 4K",
         description: "Smart TV Samsung 43 Polegadas UHD 4K, 3 HDMI, 1 USB, Processador Crystal 4K, Tela sem limites, Alexa, Controle Único",
         model: "UN43AU7700GXZD",
@@ -17,6 +18,7 @@ module.exports = {
       },
       {
         id: uuidv4(),
+        code: 000002,
         name: "Macbook Air 13.3",
         description: "Macbook Air Apple 13.3´, Processador M1, 8GB, SSD 256GB, Space Grey",
         model: "MGN63BZ/A",
@@ -29,6 +31,7 @@ module.exports = {
       },
       {
         id: uuidv4(),
+        code: 000003,
         name: "Calculadora Financeira 12C Gold",
         description: "Calculadora Financeira HP 12C Gold, 120 Funções, Visor LCD, RPN e ALG",
         model: "HP12C",
@@ -41,6 +44,7 @@ module.exports = {
       },
       {
         id: uuidv4(),
+        code: 000004,
         name: "Cervejeira 82L",
         description: "Cervejeira Consul, 82L, 220V, Titanium - CZD12ATBNA",
         model: "CZD12ATBNA",
@@ -53,6 +57,7 @@ module.exports = {
       },
       {
         id: uuidv4(),
+        code: 000005,
         name: "iPhone 12",
         description: "iPhone 12 64GB Branco, 5G, Tela de 6.1, Câmera Dupla 12MP + Selfie 12MP",
         model: "MGJ63BR/A",
@@ -65,6 +70,7 @@ module.exports = {
       },
       {
         id: uuidv4(),
+        code: 000005,
         name: "Console Playstation 5",
         description: "Console Sony Playstation 5",
         model: "PlayStation 5",
