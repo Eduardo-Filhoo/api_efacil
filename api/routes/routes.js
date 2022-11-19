@@ -1,13 +1,14 @@
 const routes = require("express").Router()
+
 // Controllers
 const carryingController = require('../controllers/carrying-controller')
 const customerController = require('../controllers/customer-controller')
 const departureController = require('../controllers/departure-controller')
 const entryController = require('../controllers/entry-controller')
-const itemDepartureController = require('../controllers/itemDeparture-controller')
-const itemEntryController = require('../controllers/itemEntry-controller')
+const itemController = require('../controllers/item-controller')
 const productController = require('../controllers/product-controller')
 const providerController = require('../controllers/provider-controller')
+const receiptController = require('../controllers/receipt-controller')
 
 // Carryings
 routes.get('/carryings', carryingController.list)
@@ -37,19 +38,12 @@ routes.post('/entry', entryController.create)
 routes.patch('/entry/:id', entryController.update)
 routes.delete('/entry/:id', entryController.destroy)
 
-// Items Departures
-routes.get('/items/departures', itemDepartureController.list)
-routes.get('/items/departure/:id', itemDepartureController.show)
-routes.post('/items/departure', itemDepartureController.create)
-routes.patch('/items/departure/:id', itemDepartureController.update)
-routes.delete('/items/departure:id', itemDepartureController.destroy)
-
-// Items Entries
-routes.get('/items/entries', itemEntryController.list)
-routes.get('/items/entry/:id', itemEntryController.show)
-routes.post('/items/entry', itemEntryController.create)
-routes.patch('/items/entry/:id', itemEntryController.update)
-routes.delete('/items/entry:id', itemEntryController.destroy)
+// Items
+routes.get('/items', itemController.list)
+routes.get('/item/:id', itemController.show)
+routes.post('/item', itemController.create)
+routes.patch('/item/:id', itemController.update)
+routes.delete('/item/:id', itemController.destroy)
 
 // Products
 routes.get('/products', productController.list)
@@ -64,5 +58,12 @@ routes.get('/provider/:id', providerController.show)
 routes.post('/provider', providerController.create)
 routes.patch('/provider/:id', providerController.update)
 routes.delete('/provider/:id', providerController.destroy)
+
+// Receipts
+routes.get('/receipts', receiptController.list)
+routes.get('/receipt/:id', receiptController.show)
+routes.post('/receipt', receiptController.create)
+routes.patch('/receipt/:id', receiptController.update)
+routes.delete('/receipt/:id', receiptController.destroy)
 
 module.exports = routes;

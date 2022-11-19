@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
 
-  const ItemEntry = sequelize.define("itemEntry", {
+  const Item = sequelize.define("item", {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
@@ -20,6 +20,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   })
 
-  return ItemEntry
+  return Item
 
 }

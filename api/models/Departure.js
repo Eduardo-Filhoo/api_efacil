@@ -17,10 +17,6 @@ module.exports = (sequelize, DataTypes) => {
     transport: {
       type: DataTypes.DECIMAL(10,2),
       allowNull: false,
-    },
-    receipt: {
-      type: DataTypes.CHAR,
-      allowNull: false,
     }
   })
 

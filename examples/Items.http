@@ -1,65 +1,33 @@
-### All Items Departures
-GET http://localhost:5000/api/items/departures
+### All Items
+GET http://localhost:5000/api/items
 
 
-### Single Item Departure
-GET http://localhost:5000/api/items/departure/:uuid
+### Single Item
+GET http://localhost:5000/api/item/:uuid
 
 
-### Add New Item Departure
-POST http://localhost:5000/api/items/departure
+### Add New Item
+POST http://localhost:5000/api/item
 Content-Type: application/json
 
 {
-  "unitary": "",
-  "quantity": "",
-  "total": "",
-  "productId": "",
-  "departureId": ""
-}
-
-
-### Update Existing Item Departure
-PATCH http://localhost:5000/api/items/departure/:uuid
-Content-Type: application/json
-
-{
-  "unitary": "",
-  "quantity": "",
-  "total": "",
-  "productId": "",
-  "departureId": ""
-}
-
-
-### Delete Existing Item Departure
-DELETE http://localhost:5000/api/items/departure/:uuid
-
-
-# /* Entries */
-
-### All Items Entries
-GET http://localhost:5000/api/items/entries
-
-
-### Single Item Entry
-GET http://localhost:5000/api/items/entry/:uuid
-
-
-### Add New Item Entry
-POST http://localhost:5000/api/items/entry
-Content-Type: application/json
-
-{
-  "unitary": 468.40,
+  "unitary": 2500.00,
   "quantity": 1,
-  "total": 468.40,
-  "productId": "5d366382-a455-45f2-83f6-44d0138f4e63",
-  "entryId": "d2a060cf-c0a9-4265-b21b-d7b5f2f052ff"
+  "total": 2500.00,
+  "productId": "c267aa42-7a41-4dd6-b816-600f22d9a75f",
+  "receiptId": "0bfbe931-219a-4713-982c-2789390f0baa"
+},
+{
+  "unitary": 2500.00,
+  "quantity": 1,
+  "total": 2500.00,
+  "productId": "03fdd7e4-2eb5-4321-8bca-3ef60b309fd6",
+  "receiptId": "0bfbe931-219a-4713-982c-2789390f0baa"
 }
 
-### Update Existing Item Entry
-PATCH http://localhost:5000/api/items/entry/:uuid
+
+### Update Existing Item
+PATCH http://localhost:5000/api/item/:uuid
 Content-Type: application/json
 
 {
@@ -67,8 +35,9 @@ Content-Type: application/json
   "quantity": "",
   "total": "",
   "productId": "",
-  "entryId": ""
+  "receiptId": ""
 }
 
-### Delete Existing Item Entry
-DELETE http://localhost:5000/api/items/entry/:uuid
+
+### Delete Existing Item
+DELETE http://localhost:5000/api/item/:uuid

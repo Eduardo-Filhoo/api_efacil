@@ -3,6 +3,7 @@ const db = require('../services/sequelize')
 const Carrying = db.carryings
 const Provider = db.providers
 const Entry = db.entries
+const Receipt = db.receipts
 
 const list = async (req, res) => {
   const entries = await Entry.findAll({
@@ -15,6 +16,10 @@ const list = async (req, res) => {
         model: Provider,
         as: 'entryprovider'
       },
+      {
+        model: Receipt,
+        as: 'entryReceipt'
+      }
     ]
   });
 
@@ -33,6 +38,10 @@ const show = async (req, res) => {
         model: Provider,
         as: 'entryprovider'
       },
+      {
+        model: Receipt,
+        as: 'entryReceipt'
+      }
     ]
   })
 
@@ -45,19 +54,25 @@ const create = async (req, res) => {
       entryDate,
       total,
       transport,
-      receipt,
       carryingId,
-      providerId
+      providerId,
+      receiptId
     } = req.body;
 
+    var newEntryDate = entryDate.split('/').reverse().join('-')
+
     await Entry.create({
-      entryDate,
+      entryDate: newEntryDate,
       total,
       transport,
-      receipt,
       carryingId,
-      providerId
+      providerId,
+      receiptId
     })
+
+    await Receipt.update({
+      entryDate: newEntryDate,
+    }, { where: { id: receiptId } })
 
     return res.status(201).json({ success: "Entry created successfully!" })
 
@@ -74,19 +89,25 @@ const update = async (req, res) => {
       entryDate,
       total,
       transport,
-      receipt,
       carryingId,
-      providerId
+      providerId,
+      receiptId
     } = req.body;
 
+    var newEntryDate = entryDate.split('/').reverse().join('-')
+
     await Entry.update({
-      entryDate,
+      entryDate: newEntryDate,
       total,
       transport,
-      receipt,
       carryingId,
-      providerId
+      providerId,
+      receiptId
     }, { where: { id } })
+
+    await Receipt.update({
+      entryDate: newEntryDate,
+    }, { where: { id: receiptId } })
 
     return res.status(200).json({ success: "Entry updated successfully!" })
 

@@ -1,19 +1,19 @@
 const db = require('../services/sequelize')
 
-const Item = db.itemsEntries
+const Item = db.items
 const Product = db.products
-const Entry = db.entries
+const Receipt = db.receipts
 
 const list = async (req, res) => {
   const items = await Item.findAll({
     include: [
       {
         model: Product,
-        as: 'productEntry'
+        as: 'itemProduct'
       },
       {
-        model: Entry,
-        as: 'itemsEntry'
+        model: Receipt,
+        as: 'itemReceipt'
       },
     ]
   });
@@ -30,8 +30,8 @@ const show = async (req, res) => {
         as: 'productEntry'
       },
       {
-        model: Entry,
-        as: 'itemsEntry'
+        model: Receipt,
+        as: 'itemReceipt'
       },
     ]
   })
@@ -41,14 +41,14 @@ const show = async (req, res) => {
 
 const create = async (req, res) => {
   try {
-    const { unitary, quantity, total, productId, entryId } = req.body;
+    const { unitary, quantity, total, productId, receiptId } = req.body;
 
     await Item.create({
       unitary,
       quantity,
       total,
       productId,
-      entryId
+      receiptId
     })
 
     return res.status(201).json({ success: "Item created successfully!" })
@@ -62,14 +62,14 @@ const create = async (req, res) => {
 const update = async (req, res) => {
   try {
     const { id } = req.params;
-    const { unitary, quantity, total, productId, entryId } = req.body;
+    const { unitary, quantity, total, productId, receiptId } = req.body;
 
     await Item.update({
       unitary,
       quantity,
       total,
       productId,
-      entryId
+      receiptId
     }, { where: { id } })
 
     return res.status(200).json({ success: "Item updated successfully!" })

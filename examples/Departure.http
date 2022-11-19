@@ -11,12 +11,12 @@ POST http://localhost:5000/api/departure
 Content-Type: application/json
 
 {
-  "departureDate": "",
-  "total": "",
-  "transport": "",
-  "receipt": "",
-  "carryingId": "",
-  "customerId": ""
+  "departureDate": "2022-11-10",
+  "total": 5000.00,
+  "transport": 45.00,
+  "carryingId": "aac027eb-c862-4e16-9a10-802534dd739d",
+  "customerId": "6550ddf6-6f2e-4266-94eb-ab0284cd50d6",
+  "receiptId": "0bfbe931-219a-4713-982c-2789390f0baa"
 }
 
 

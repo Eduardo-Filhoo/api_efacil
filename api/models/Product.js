@@ -8,15 +8,26 @@ module.exports = (sequelize, DataTypes) => {
     },
     code: {
       type: DataTypes.CHAR(6),
+      allowNull: true
+    },
+    name: {
+      type: DataTypes.STRING,
       allowNull: false,
-      uppercase: true
     },
     description: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    model: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    manufacturer: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     unitMeasure: {
-      type: DataTypes.STRING(3),
+      type: DataTypes.CHAR(4),
       allowNull: false,
     },
     descriptionUnitMeasure: {

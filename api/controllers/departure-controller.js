@@ -3,6 +3,7 @@ const db = require('../services/sequelize')
 const Carrying = db.carryings
 const Customer = db.customers
 const Departure = db.departures
+const Receipt = db.receipts
 
 const list = async (req, res) => {
   const departures = await Departure.findAll({
@@ -15,6 +16,10 @@ const list = async (req, res) => {
         model: Customer,
         as: 'departureCustomer'
       },
+      {
+        model: Receipt,
+        as: 'departureReceipt'
+      }
     ]
   });
 
@@ -33,6 +38,10 @@ const show = async (req, res) => {
         model: Customer,
         as: 'departureCustomer'
       },
+      {
+        model: Receipt,
+        as: 'departureReceipt'
+      }
     ]
   })
 
@@ -45,19 +54,25 @@ const create = async (req, res) => {
       departureDate,
       total,
       transport,
-      receipt,
       carryingId,
-      customerId
+      customerId,
+      receiptId
     } = req.body;
 
+    var newDepartureDate = departureDate.split('/').reverse().join('-')
+
     await Departure.create({
-      departureDate,
+      departureDate: newDepartureDate,
       total,
       transport,
-      receipt,
       carryingId,
-      customerId
+      customerId,
+      receiptId
     })
+
+    await Receipt.update({
+      departureDate: newDepartureDate,
+    }, { where: { id: receiptId } })
 
     return res.status(201).json({ success: "Departure created successfully!" })
 
@@ -74,19 +89,25 @@ const update = async (req, res) => {
       departureDate,
       total,
       transport,
-      receipt,
       carryingId,
-      customerId
+      customerId,
+      receiptId
     } = req.body;
 
+    var newDepartureDate = departureDate.split('/').reverse().join('-')
+
     await Departure.update({
-      departureDate,
+      departureDate: newDepartureDate,
       total,
       transport,
-      receipt,
       carryingId,
-      customerId
+      customerId,
+      receiptId
     }, { where: { id } })
+
+    await Receipt.update({
+      departureDate: newDepartureDate,
+    }, { where: { id: receiptId } })
 
     return res.status(200).json({ success: "Departure updated successfully!" })
 

@@ -1,8 +1,10 @@
 ### All Providers
 GET http://localhost:5000/api/providers
 
+
 ### Single Provider
 GET http://localhost:5000/api/provider/:uuid
+
 
 ### Add New Provider
 POST http://localhost:5000/api/provider
@@ -21,6 +23,7 @@ Content-Type: application/json
   "uf": "SP",
   "isActive": true
 }
+
 
 ### Update Existing Provider
 PATCH http://localhost:5000/api/provider/:uuid

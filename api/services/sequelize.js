@@ -11,10 +11,10 @@ db.carryings = require('../models/Carrying')(sequelize, DataTypes)
 db.customers = require('../models/Customer')(sequelize, DataTypes)
 db.departures = require('../models/Departure')(sequelize, DataTypes)
 db.entries = require('../models/Entry')(sequelize, DataTypes)
-db.itemsDepartures = require('../models/ItemDeparture')(sequelize, DataTypes)
-db.itemsEntries = require('../models/ItemEntry')(sequelize, DataTypes)
+db.items = require('../models/Item')(sequelize, DataTypes)
 db.products = require('../models/Product')(sequelize, DataTypes)
 db.providers = require('../models/Provider')(sequelize, DataTypes)
+db.receipts = require('../models/Receipt')(sequelize, DataTypes)
 
 db.sequelize.sync({ force: false })
 .then(() => {
@@ -35,21 +35,21 @@ db.entries.belongsTo(db.carryings, { foreignKey: 'carryingId', as: 'entryCarryin
 db.carryings.hasMany(db.departures, { foreignKey: 'carryingId', as: 'carryingdeparture', onDelete: 'NO ACTION', onUpdate: 'NO ACTION' });
 db.departures.belongsTo(db.carryings, { foreignKey: 'carryingId', as: 'departureCarrying' });
 
-// Departures and items departures
-db.departures.hasMany(db.itemsDepartures, { foreignKey: 'departureId', as: 'departureItems', onDelete: 'NO ACTION', onUpdate: 'NO ACTION' });
-db.itemsDepartures.belongsTo(db.departures, { foreignKey: 'departureId', as: 'itemsDeparture' });
+// Products and items
+db.products.hasMany(db.items, { foreignKey: 'productId', as: 'productItem', onDelete: 'NO ACTION', onUpdate: 'NO ACTION' });
+db.items.belongsTo(db.products, { foreignKey: 'productId', as: 'itemProduct' });
 
-// Entries and items entries
-db.entries.hasMany(db.itemsEntries, { foreignKey: 'entryId', as: 'entryItems', onDelete: 'NO ACTION', onUpdate: 'NO ACTION' });
-db.itemsEntries.belongsTo(db.entries, { foreignKey: 'entryId', as: 'itemsEntry' });
+// Receipts and items
+db.receipts.hasMany(db.items, { foreignKey: 'receiptId', as: 'receiptItem', onDelete: 'NO ACTION', onUpdate: 'NO ACTION' });
+db.items.belongsTo(db.receipts, { foreignKey: 'receiptId', as: 'itemReceipt' });
 
-// Products and items departures
-db.products.hasMany(db.itemsDepartures, { foreignKey: 'productId', as: 'departureProduct', onDelete: 'NO ACTION', onUpdate: 'NO ACTION' });
-db.itemsDepartures.belongsTo(db.products, { foreignKey: 'productId', as: 'productDeparture' });
+// Receipts and Entries
+db.receipts.hasMany(db.entries, { foreignKey: 'receiptId', as: 'receiptEntry', onDelete: 'NO ACTION', onUpdate: 'NO ACTION' });
+db.entries.belongsTo(db.receipts, { foreignKey: 'receiptId', as: 'entryReceipt' });
 
-// Products and items entries
-db.products.hasMany(db.itemsEntries, { foreignKey: 'productId', as: 'entryProduct', onDelete: 'NO ACTION', onUpdate: 'NO ACTION' });
-db.itemsEntries.belongsTo(db.products, { foreignKey: 'productId', as: 'productEntry' });
+// Receipts and Departures
+db.receipts.hasMany(db.departures, { foreignKey: 'receiptId', as: 'receiptDeparture', onDelete: 'NO ACTION', onUpdate: 'NO ACTION' });
+db.departures.belongsTo(db.receipts, { foreignKey: 'receiptId', as: 'departureReceipt' });
 
 // Customers and departures
 db.customers.hasMany(db.departures, { foreignKey: 'customerId', as: 'customerDeparture', onDelete: 'NO ACTION', onUpdate: 'NO ACTION' });

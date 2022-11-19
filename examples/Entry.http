@@ -12,11 +12,11 @@ Content-Type: application/json
 
 {
   "entryDate": "2022-11-10",
-  "total": 520.40,
-  "transport": 52.00,
-  "receipt": "000021948",
-  "carryingId": "99db7a8f-bb9d-4cc3-ae42-b98cab0ee3d4",
-  "providerId": "691fcea1-7594-4070-88b2-f0dbf3313c69"
+  "total": 5000.00,
+  "transport": 0.00,
+  "carryingId": "aac027eb-c862-4e16-9a10-802534dd739d",
+  "providerId": "0745c735-cd3d-44c1-85b0-5d55adac3455",
+  "receiptId": "0bfbe931-219a-4713-982c-2789390f0baa"
 }
 
 
