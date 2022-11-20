@@ -2,5 +2,6 @@ const { resolve } = require('path')
 
 module.exports = {
   'config': resolve(__dirname, 'api', 'database', 'db.js'),
-  'seeders-path': resolve(__dirname, 'api', 'database', 'seeds')
+  'seeders-path': resolve(__dirname, 'api', 'database', 'seeds'),
+  'models-path': resolve(__dirname, 'api', 'database', 'models')
 }

@@ -1,14 +1,14 @@
 const routes = require("express").Router()
 
 // Controllers
-const carryingController = require('../controllers/carrying-controller')
-const customerController = require('../controllers/customer-controller')
-const departureController = require('../controllers/departure-controller')
-const entryController = require('../controllers/entry-controller')
-const itemController = require('../controllers/item-controller')
-const productController = require('../controllers/product-controller')
-const providerController = require('../controllers/provider-controller')
-const receiptController = require('../controllers/receipt-controller')
+const carryingController = require('../controllers/carrying.controller')
+const customerController = require('../controllers/customer.controller')
+const departureController = require('../controllers/departure.controller')
+const entryController = require('../controllers/entry.controller')
+const itemController = require('../controllers/item.controller')
+const productController = require('../controllers/product.controller')
+const providerController = require('../controllers/provider.controller')
+const receiptController = require('../controllers/receipt.controller')
 
 // Carryings
 routes.get('/carryings', carryingController.list)

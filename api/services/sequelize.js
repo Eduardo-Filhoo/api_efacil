@@ -7,14 +7,14 @@ db.Sequelize = Sequelize
 db.sequelize = sequelize
 
 // Models
-db.carryings = require('../models/Carrying')(sequelize, DataTypes)
-db.customers = require('../models/Customer')(sequelize, DataTypes)
-db.departures = require('../models/Departure')(sequelize, DataTypes)
-db.entries = require('../models/Entry')(sequelize, DataTypes)
-db.items = require('../models/Item')(sequelize, DataTypes)
-db.products = require('../models/Product')(sequelize, DataTypes)
-db.providers = require('../models/Provider')(sequelize, DataTypes)
-db.receipts = require('../models/Receipt')(sequelize, DataTypes)
+db.carryings = require('../database/models/Carrying')(sequelize, DataTypes)
+db.customers = require('../database/models/Customer')(sequelize, DataTypes)
+db.departures = require('../database/models/Departure')(sequelize, DataTypes)
+db.entries = require('../database/models/Entry')(sequelize, DataTypes)
+db.items = require('../database/models/Item')(sequelize, DataTypes)
+db.products = require('../database/models/Product')(sequelize, DataTypes)
+db.providers = require('../database/models/Provider')(sequelize, DataTypes)
+db.receipts = require('../database/models/Receipt')(sequelize, DataTypes)
 
 db.sequelize.sync({ force: false })
 .then(() => {
