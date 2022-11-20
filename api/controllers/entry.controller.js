@@ -1,4 +1,4 @@
-const db = require('../services/sequelize')
+const db = require('../util/sequelize')
 
 const Carrying = db.carryings
 const Provider = db.providers

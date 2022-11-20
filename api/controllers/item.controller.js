@@ -1,4 +1,4 @@
-const db = require('../services/sequelize')
+const db = require('../util/sequelize')
 
 const Item = db.items
 const Product = db.products
