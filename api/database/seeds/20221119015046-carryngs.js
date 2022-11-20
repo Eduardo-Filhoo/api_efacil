@@ -7,6 +7,7 @@ module.exports = {
         id: uuidv4(),
         name: "Sérgio e Elza Mudanças Ltda",
         registration: "26766907000150",
+        stateRegistration: "26766907000150",
         phone: "1927541731",
         email: "almoxarifado@sergioeelzamudancasltda.com.br",
         cep: "13873059",
@@ -23,6 +24,7 @@ module.exports = {
         id: uuidv4(),
         name: "Filipe e Daniel Mudanças Ltda",
         registration: "63013627000105",
+        stateRegistration: "63013627000105",
         phone: "11998776967",
         email: "ti@filipeedanielmudancasltda.com.br",
         cep: "13208430",
@@ -39,6 +41,7 @@ module.exports = {
         id: uuidv4(),
         name: "Jorge e Lucca Entregas Expressas Ltda",
         registration: "84017077000164",
+        stateRegistration: "84017077000164",
         phone: "909514575227",
         email: "treinamento@jorgeeluccaentregasexpressasltda.com.br",
         cep: "18112660",
@@ -47,7 +50,7 @@ module.exports = {
         district: "Jardim Ana Claudia",
         city: "Votorantim",
         uf: "SP",
-        isActive: true,
+        isActive: false,
         createdAt: new Date(),
         updatedAt: new Date()
       }

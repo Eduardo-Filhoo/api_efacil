@@ -8,6 +8,16 @@ const list = async (req, res) => {
   return res.status(201).json({ products })
 }
 
+const find = async (req, res) => {
+  const products = await Product.findAll({
+    where: {
+      isActive: true
+    }
+  });
+
+  return res.status(200).json({ products })
+}
+
 const show = async (req, res) => {
   const { id } = req.params;
   const product = await Product.findByPk(id)
@@ -104,6 +114,7 @@ const destroy = async (req, res) => {
 
 module.exports = {
   list,
+  find,
   show,
   create,
   update,

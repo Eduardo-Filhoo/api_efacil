@@ -8,11 +8,21 @@ const list = async (req, res) => {
   return res.status(200).json({ carryings })
 }
 
+const find = async (req, res) => {
+  const carryings = await Carrying.findAll({
+    where: {
+      isActive: true
+    }
+  });
+
+  return res.status(201).json({ carryings })
+}
+
 const show = async (req, res) => {
   const { id } = req.params;
-  const costumer = await Carrying.findByPk(id)
+  const carrying = await Carrying.findByPk(id)
 
-  return res.status(200).json({ costumer })
+  return res.status(200).json({ carrying })
 }
 
 const create = async (req, res) => {
@@ -20,6 +30,7 @@ const create = async (req, res) => {
     const {
       name,
       registration,
+      stateRegistration,
       phone,
       email,
       cep,
@@ -34,6 +45,7 @@ const create = async (req, res) => {
     await Carrying.create({
       name,
       registration,
+      stateRegistration,
       phone,
       email,
       cep,
@@ -59,6 +71,7 @@ const update = async (req, res) => {
     const {
       name,
       registration,
+      stateRegistration,
       email,
       phone,
       cep,
@@ -73,6 +86,7 @@ const update = async (req, res) => {
     await Carrying.update({
       name,
       registration,
+      stateRegistration,
       email,
       phone,
       cep,
@@ -95,9 +109,9 @@ const update = async (req, res) => {
 const destroy = async (req, res) => {
   try {
     const { id } = req.params;
-    const costumer = await Carrying.findByPk(id);
+    const carrying = await Carrying.findByPk(id);
 
-    await costumer.destroy();
+    await carrying.destroy();
 
     return res.status(200).json({ success: "Carrying deleted successfully!" })
 
@@ -109,6 +123,7 @@ const destroy = async (req, res) => {
 
 module.exports = {
   list,
+  find,
   show,
   create,
   update,

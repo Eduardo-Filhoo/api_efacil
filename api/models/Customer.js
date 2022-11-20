@@ -10,7 +10,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    registration: {
+    cpf: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    rg: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -18,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    phone: {
+    cell: {
       type: DataTypes.STRING,
       allowNull: false,
     },

@@ -12,6 +12,7 @@ const receiptController = require('../controllers/receipt-controller')
 
 // Carryings
 routes.get('/carryings', carryingController.list)
+routes.get('/active/carryings', carryingController.find)
 routes.get('/carrying/:id', carryingController.show)
 routes.post('/carrying', carryingController.create)
 routes.patch('/carrying/:id', carryingController.update)
@@ -19,6 +20,7 @@ routes.delete('/carrying/:id', carryingController.destroy)
 
 // Custumers
 routes.get('/customers', customerController.list)
+routes.get('/active/customers', customerController.find)
 routes.get('/customer/:id', customerController.show)
 routes.post('/customer', customerController.create)
 routes.patch('/customer/:id', customerController.update)
@@ -47,6 +49,7 @@ routes.delete('/item/:id', itemController.destroy)
 
 // Products
 routes.get('/products', productController.list)
+routes.get('/active/products', productController.find)
 routes.get('/product/:id', productController.show)
 routes.post('/product', productController.create)
 routes.patch('/product/:id', productController.update)
@@ -54,6 +57,7 @@ routes.delete('/product/:id', productController.destroy)
 
 // Providers
 routes.get('/providers', providerController.list)
+routes.get('/active/providers', providerController.find)
 routes.get('/provider/:id', providerController.show)
 routes.post('/provider', providerController.create)
 routes.patch('/provider/:id', providerController.update)

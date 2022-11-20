@@ -8,6 +8,16 @@ const list = async (req, res) => {
   return res.status(201).json({ costumers })
 }
 
+const find = async (req, res) => {
+  const costumers = await Costumer.findAll({
+    where: {
+      isActive: true
+    }
+  });
+
+  return res.status(201).json({ costumers })
+}
+
 const show = async (req, res) => {
   const { id } = req.params;
   const costumer = await Costumer.findByPk(id)
@@ -19,9 +29,10 @@ const create = async (req, res) => {
   try {
     const {
       name,
-      registration,
+      cpf,
+      rg,
       email,
-      phone,
+      cell,
       cep,
       address,
       number,
@@ -33,9 +44,10 @@ const create = async (req, res) => {
 
     await Costumer.create({
       name,
-      registration,
+      cpf,
+      rg,
       email,
-      phone,
+      cell,
       cep,
       address,
       number,
@@ -58,9 +70,10 @@ const update = async (req, res) => {
     const { id } = req.params;
     const {
       name,
-      registration,
+      cpf,
+      rg,
       email,
-      phone,
+      cell,
       cep,
       address,
       number,
@@ -72,9 +85,10 @@ const update = async (req, res) => {
 
     await Costumer.update({
       name,
-      registration,
+      cpf,
+      rg,
       email,
-      phone,
+      cell,
       cep,
       address,
       number,
@@ -109,6 +123,7 @@ const destroy = async (req, res) => {
 
 module.exports = {
   list,
+  find,
   show,
   create,
   update,
