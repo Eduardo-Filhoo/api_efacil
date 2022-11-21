@@ -10,9 +10,10 @@ Content-Type: application/json
 
 {
   "name": "Ryan Luan Vicente Almada",
-  "registration": "88153008307",
-  "phone": "9827236445",
+  "cpf": "88153008307",
+  "rg": "7038003518",
   "email": "ryan.luan.almada@edbrasil.net",
+  "cell": "9827236445",
   "cep": "65143970",
   "address": "Avenida José da Silva Calvet",
   "number": "306",
@@ -27,18 +28,20 @@ PATCH http://localhost:5000/api/customer/:uuid
 Content-Type: application/json
 
 {
-  "name": "",
-  "registration": "",
-  "phone": "",
-  "email": "",
-  "cep": "",
-  "address": "",
-  "number": "",
-  "district": "",
-  "city": "",
-  "uf": "",
+  "name": "Ryan Luan Vicente Almada",
+  "cpf": "88153008307",
+  "rg": "7038003518",
+  "email": "ryan.luan.almada@edbrasil.net",
+  "cell": "9827236445",
+  "cep": "65143970",
+  "address": "Avenida José da Silva Calvet",
+  "number": "306",
+  "district": "Centro",
+  "city": "Bacabeira",
+  "uf": "MA",
   "isActive": false
 }
+
 
 ### Delete Existing Customer
 DELETE http://localhost:5000/api/customer/:uuid

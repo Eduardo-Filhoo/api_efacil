@@ -9,7 +9,9 @@ POST http://localhost:5000/api/product
 Content-Type: application/json
 
 {
+  "name": "Notebook Acer Aspire 5",
   "description": "Notebook Acer Aspire 5 A514-54g-59bt",
+  "model": "A514-54g-59bt",
   "manufacturer": "Acer",
   "unitMeasure": "UN",
   "descriptionUnitMeasure": "UNIDADE",
@@ -21,11 +23,13 @@ PATCH http://localhost:5000/api/product/c267aa42-7a41-4dd6-b816-600f22d9a75f
 Content-Type: application/json
 
 {
+  "name": "Notebook Acer Aspire 5",
   "description": "Notebook Acer Aspire 5 A514-54g-59bt",
+  "model": "A514-54g-59bt",
   "manufacturer": "Acer",
   "unitMeasure": "UN",
   "descriptionUnitMeasure": "UNIDADE",
-  "isActive": true
+  "isActive": false
 }
 
 ### Delete Existing Product

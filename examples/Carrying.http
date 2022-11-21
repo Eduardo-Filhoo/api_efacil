@@ -13,6 +13,7 @@ Content-Type: application/json
 {
   "name": "Sérgio e Elza Mudanças Ltda",
   "registration": "26766907000150",
+  "stateRegistration": "26766907000150",
   "phone": "1927541731",
   "email": "almoxarifado@sergioeelzamudancasltda.com.br",
   "cep": "13873059",
@@ -32,6 +33,7 @@ Content-Type: application/json
 {
   "name": "Sérgio e Elza Mudanças Ltda",
   "registration": "26766907000150",
+  "stateRegistration": "26766907000150",
   "phone": "1927541731",
   "email": "almoxarifado@sergioeelzamudancasltda.com.br",
   "cep": "13873059",
@@ -40,7 +42,7 @@ Content-Type: application/json
   "district": "Vila Valentin",
   "city": "São João da Boa Vista",
   "uf": "SP",
-  "isActive": true
+  "isActive": false
 }
 
 

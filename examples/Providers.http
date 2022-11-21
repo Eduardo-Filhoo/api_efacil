@@ -13,6 +13,7 @@ Content-Type: application/json
 {
   "name": "Henry e Lucas Informática ME",
   "registration": "16958933000126",
+  "stateRegistration": "16958933000126",
   "phone": "1135816411",
   "email": "contabilidade@henryelucasinformaticame.com.br",
   "cep": "09381040",
@@ -30,16 +31,17 @@ PATCH http://localhost:5000/api/provider/:uuid
 Content-Type: application/json
 
 {
-  "name": "",
-  "registration": "",
-  "phone": "",
-  "email": "",
-  "cep": "",
-  "address": "",
-  "number": "",
-  "district": "",
-  "city": "",
-  "uf": "",
+  "name": "Henry e Lucas Informática ME",
+  "registration": "16958933000126",
+  "stateRegistration": "16958933000126",
+  "phone": "1135816411",
+  "email": "contabilidade@henryelucasinformaticame.com.br",
+  "cep": "09381040",
+  "address": "Rua Porto Alegre",
+  "number": "781",
+  "district": "Jardim Oratório",
+  "city": "Mauá",
+  "uf": "SP",
   "isActive": false
 }
 

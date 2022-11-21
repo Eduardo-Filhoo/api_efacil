@@ -29,10 +29,10 @@ const create = async (req, res) => {
   try {
     const {
       name,
-      cpf,
-      rg,
+      registration,
+      stateRegistration,
+      phone,
       email,
-      cell,
       cep,
       address,
       number,
@@ -44,10 +44,10 @@ const create = async (req, res) => {
 
     await Provider.create({
       name,
-      cpf,
-      rg,
+      registration,
+      stateRegistration,
+      phone,
       email,
-      cell,
       cep,
       address,
       number,
@@ -70,10 +70,10 @@ const update = async (req, res) => {
     const { id } = req.params;
     const {
       name,
-      cpf,
-      rg,
+      registration,
+      stateRegistration,
+      phone,
       email,
-      cell,
       cep,
       address,
       number,
@@ -85,10 +85,10 @@ const update = async (req, res) => {
 
     await Provider.update({
       name,
-      cpf,
-      rg,
+      registration,
+      stateRegistration,
+      phone,
       email,
-      cell,
       cep,
       address,
       number,
