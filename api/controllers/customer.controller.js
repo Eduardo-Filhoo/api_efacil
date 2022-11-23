@@ -1,29 +1,29 @@
-const db = require('../util/sequelize')
+const db = require("../util/sequelize");
 
-const Costumer = db.customers
+const Customer = db.customers;
 
 const list = async (req, res) => {
-  const costumers = await Costumer.findAll();
+  const customers = await Customer.findAll();
 
-  return res.status(201).json({ costumers })
-}
+  return res.status(201).json({ customers });
+};
 
 const find = async (req, res) => {
-  const costumers = await Costumer.findAll({
+  const customers = await Customer.findAll({
     where: {
-      isActive: true
-    }
+      isActive: true,
+    },
   });
 
-  return res.status(201).json({ costumers })
-}
+  return res.status(201).json({ customers });
+};
 
 const show = async (req, res) => {
   const { id } = req.params;
-  const costumer = await Costumer.findByPk(id)
+  const customer = await Customer.findByPk(id);
 
-  return res.status(200).json({ costumer })
-}
+  return res.status(200).json({ customer });
+};
 
 const create = async (req, res) => {
   try {
@@ -39,10 +39,10 @@ const create = async (req, res) => {
       district,
       city,
       uf,
-      isActive
+      isActive,
     } = req.body;
 
-    await Costumer.create({
+    await Customer.create({
       name,
       cpf,
       rg,
@@ -54,16 +54,15 @@ const create = async (req, res) => {
       district,
       city,
       uf,
-      isActive
-    })
+      isActive,
+    });
 
-    return res.status(201).json({ success: "Costumer created successfully!" })
-
+    return res.status(201).json({ success: "Customer created successfully!" });
   } catch (err) {
-    console.error(err.message)
-    return res.status(400).json({ error: "Failed to create Costumer!" })
+    console.error(err.message);
+    return res.status(400).json({ error: "Failed to create Customer!" });
   }
-}
+};
 
 const update = async (req, res) => {
   try {
@@ -80,46 +79,47 @@ const update = async (req, res) => {
       district,
       city,
       uf,
-      isActive
+      isActive,
     } = req.body;
 
-    await Costumer.update({
-      name,
-      cpf,
-      rg,
-      email,
-      cell,
-      cep,
-      address,
-      number,
-      district,
-      city,
-      uf,
-      isActive
-    }, { where: { id } })
+    await Customer.update(
+      {
+        name,
+        cpf,
+        rg,
+        email,
+        cell,
+        cep,
+        address,
+        number,
+        district,
+        city,
+        uf,
+        isActive,
+      },
+      { where: { id } }
+    );
 
-    return res.status(200).json({ success: "Costumer updated successfully!" })
-
+    return res.status(200).json({ success: "Customer updated successfully!" });
   } catch (err) {
-    console.error(err)
-    return res.status(400).json({ error: "Failed to update Costumer!" })
+    console.error(err);
+    return res.status(400).json({ error: "Failed to update Customer!" });
   }
-}
+};
 
 const destroy = async (req, res) => {
   try {
     const { id } = req.params;
-    const costumer = await Costumer.findByPk(id);
+    const customer = await Customer.findByPk(id);
 
-    await costumer.destroy();
+    await customer.destroy();
 
-    return res.status(200).json({ success: "Costumer deleted successfully!" })
-
+    return res.status(200).json({ success: "Customer deleted successfully!" });
   } catch (err) {
-    console.error(err.message)
-    return res.status(400).json({ error: "Failed to deleted Costumer!" })
+    console.error(err.message);
+    return res.status(400).json({ error: "Failed to deleted Customer!" });
   }
-}
+};
 
 module.exports = {
   list,
@@ -127,5 +127,5 @@ module.exports = {
   show,
   create,
   update,
-  destroy
-}
+  destroy,
+};

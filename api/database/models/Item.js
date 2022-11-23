@@ -1,5 +1,4 @@
 module.exports = (sequelize, DataTypes) => {
-
   const Item = sequelize.define("item", {
     id: {
       type: DataTypes.UUID,
@@ -7,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
     },
     unitary: {
-      type: DataTypes.DECIMAL(10,2),
+      type: DataTypes.STRING,
       allowNull: false,
     },
     quantity: {
@@ -15,11 +14,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     total: {
-      type: DataTypes.DECIMAL(10,2),
+      type: DataTypes.STRING,
       allowNull: false,
-    }
-  })
+    },
+  });
 
-  return Item
-
-}
+  return Item;
+};

@@ -11,18 +11,11 @@ POST http://localhost:5000/api/item
 Content-Type: application/json
 
 {
-  "unitary": 2500.00,
+  "productId": "16603d87-4b1b-47d5-8aa5-f778c853e353",
   "quantity": 1,
-  "total": 2500.00,
-  "productId": "c267aa42-7a41-4dd6-b816-600f22d9a75f",
-  "receiptId": "0bfbe931-219a-4713-982c-2789390f0baa"
-},
-{
-  "unitary": 2500.00,
-  "quantity": 1,
-  "total": 2500.00,
-  "productId": "03fdd7e4-2eb5-4321-8bca-3ef60b309fd6",
-  "receiptId": "0bfbe931-219a-4713-982c-2789390f0baa"
+  "receiptId": "fa5b6dac-0883-409c-bebc-d35972a2a935",
+  "total": "5.00",
+  "unitary": "5.00",
 }
 
 

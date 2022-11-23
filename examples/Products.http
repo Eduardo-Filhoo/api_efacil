@@ -9,8 +9,8 @@ POST http://localhost:5000/api/product
 Content-Type: application/json
 
 {
-  "name": "Notebook Acer Aspire 5",
-  "description": "Notebook Acer Aspire 5 A514-54g-59bt",
+  "name": "Notebook Acer Aspire 7",
+  "description": "Notebook Acer Aspire 7 A514-54g-59bt",
   "model": "A514-54g-59bt",
   "manufacturer": "Acer",
   "unitMeasure": "UN",

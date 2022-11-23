@@ -1,5 +1,4 @@
 module.exports = (sequelize, DataTypes) => {
-
   const Departure = sequelize.define("departure", {
     id: {
       type: DataTypes.UUID,
@@ -11,15 +10,14 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     total: {
-      type: DataTypes.DECIMAL(10,2),
+      type: DataTypes.STRING,
       allowNull: false,
     },
     transport: {
-      type: DataTypes.DECIMAL(10,2),
+      type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
-    }
-  })
+    },
+  });
 
-  return Departure
-
-}
+  return Departure;
+};

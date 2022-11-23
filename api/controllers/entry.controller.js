@@ -1,30 +1,32 @@
-const db = require('../util/sequelize')
+const db = require("../util/sequelize");
 
-const Carrying = db.carryings
-const Provider = db.providers
-const Entry = db.entries
-const Receipt = db.receipts
+const Carrying = db.carryings;
+const Provider = db.providers;
+const Entry = db.entries;
+const Receipt = db.receipts;
+const Item = db.items;
+const Product = db.products;
 
 const list = async (req, res) => {
   const entries = await Entry.findAll({
     include: [
       {
         model: Carrying,
-        as: 'entryCarrying'
+        as: "entryCarrying",
       },
       {
         model: Provider,
-        as: 'entryprovider'
+        as: "entryprovider",
       },
       {
         model: Receipt,
-        as: 'entryReceipt'
-      }
-    ]
+        as: "entryReceipt",
+      },
+    ],
   });
 
-  return res.status(200).json({ entries })
-}
+  return res.status(200).json({ entries });
+};
 
 const show = async (req, res) => {
   const { id } = req.params;
@@ -32,90 +34,96 @@ const show = async (req, res) => {
     include: [
       {
         model: Carrying,
-        as: 'entryCarrying'
+        as: "entryCarrying",
       },
       {
         model: Provider,
-        as: 'entryprovider'
+        as: "entryprovider",
       },
       {
         model: Receipt,
-        as: 'entryReceipt'
-      }
-    ]
-  })
+        as: "entryReceipt",
+        include: [
+          {
+            model: Item,
+            as: "receiptItem",
+            include: [{ model: Product, as: "itemProduct" }],
+          },
+        ],
+      },
+    ],
+  });
 
-  return res.status(200).json({ entry })
-}
+  return res.status(200).json({ entry });
+};
 
 const create = async (req, res) => {
   try {
-    const {
-      entryDate,
-      total,
-      transport,
-      carryingId,
-      providerId,
-      receiptId
-    } = req.body;
+    const { entryDate, total, transport, carryingId, providerId, receiptId } =
+      req.body;
 
-    var newEntryDate = entryDate.split('/').reverse().join('-')
+    var newEntryDate = entryDate.split("/").reverse().join("-");
 
-    await Entry.create({
+    const createdEntry = await Entry.create({
       entryDate: newEntryDate,
       total,
       transport,
       carryingId,
       providerId,
-      receiptId
-    })
+      receiptId,
+    });
 
-    await Receipt.update({
-      entryDate: newEntryDate,
-    }, { where: { id: receiptId } })
+    await Receipt.update(
+      {
+        entryDate: newEntryDate,
+        total: total,
+      },
+      { where: { id: receiptId } }
+    );
 
-    return res.status(201).json({ success: "Entry created successfully!" })
-
+    return res
+      .status(201)
+      .json({ success: "Entry created successfully!", id: createdEntry.id });
   } catch (err) {
-    console.error(err.message)
-    return res.status(400).json({ error: "Failed to create Entry!" })
+    console.error(err.message);
+    return res.status(400).json({ error: "Failed to create Entry!" });
   }
-}
+};
 
 const update = async (req, res) => {
   try {
     const { id } = req.params;
-    const {
-      entryDate,
-      total,
-      transport,
-      carryingId,
-      providerId,
-      receiptId
-    } = req.body;
+    const { entryDate, total, transport, carryingId, providerId, receiptId } =
+      req.body;
 
-    var newEntryDate = entryDate.split('/').reverse().join('-')
+    var newEntryDate = entryDate.split("/").reverse().join("-");
 
-    await Entry.update({
-      entryDate: newEntryDate,
-      total,
-      transport,
-      carryingId,
-      providerId,
-      receiptId
-    }, { where: { id } })
+    await Entry.update(
+      {
+        entryDate: newEntryDate,
+        total,
+        transport,
+        carryingId,
+        providerId,
+        receiptId,
+      },
+      { where: { id } }
+    );
 
-    await Receipt.update({
-      entryDate: newEntryDate,
-    }, { where: { id: receiptId } })
+    await Receipt.update(
+      {
+        entryDate: newEntryDate,
+        total: total,
+      },
+      { where: { id: receiptId } }
+    );
 
-    return res.status(200).json({ success: "Entry updated successfully!" })
-
+    return res.status(200).json({ success: "Entry updated successfully!" });
   } catch (err) {
-    console.error(err)
-    return res.status(400).json({ error: "Failed to update Entry!" })
+    console.error(err);
+    return res.status(400).json({ error: "Failed to update Entry!" });
   }
-}
+};
 
 const destroy = async (req, res) => {
   try {
@@ -124,18 +132,17 @@ const destroy = async (req, res) => {
 
     await entry.destroy();
 
-    return res.status(200).json({ success: "Entry deleted successfully!" })
-
+    return res.status(200).json({ success: "Entry deleted successfully!" });
   } catch (err) {
-    console.error(err.message)
-    return res.status(400).json({ error: "Failed to deleted Entry!" })
+    console.error(err.message);
+    return res.status(400).json({ error: "Failed to deleted Entry!" });
   }
-}
+};
 
 module.exports = {
   list,
   show,
   create,
   update,
-  destroy
-}
+  destroy,
+};

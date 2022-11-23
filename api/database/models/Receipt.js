@@ -1,5 +1,4 @@
 module.exports = (sequelize, DataTypes) => {
-
   const Receipt = sequelize.define("receipt", {
     id: {
       type: DataTypes.UUID,
@@ -19,8 +18,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     total: {
-      type: DataTypes.DECIMAL(10,2),
-      allowNull: false,
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: true,
     },
     entryDate: {
       type: DataTypes.DATEONLY,
@@ -29,9 +28,8 @@ module.exports = (sequelize, DataTypes) => {
     departureDate: {
       type: DataTypes.DATEONLY,
       allowNull: true,
-    }
-  })
+    },
+  });
 
-  return Receipt
-
-}
+  return Receipt;
+};

@@ -1,30 +1,32 @@
-const db = require('../util/sequelize')
+const db = require("../util/sequelize");
 
-const Carrying = db.carryings
-const Customer = db.customers
-const Departure = db.departures
-const Receipt = db.receipts
+const Carrying = db.carryings;
+const Customer = db.customers;
+const Departure = db.departures;
+const Receipt = db.receipts;
+const Item = db.items;
+const Product = db.products;
 
 const list = async (req, res) => {
   const departures = await Departure.findAll({
     include: [
       {
         model: Carrying,
-        as: 'departureCarrying'
+        as: "departureCarrying",
       },
       {
         model: Customer,
-        as: 'departureCustomer'
+        as: "departureCustomer",
       },
       {
         model: Receipt,
-        as: 'departureReceipt'
-      }
-    ]
+        as: "departureReceipt",
+      },
+    ],
   });
 
-  return res.status(200).json({ departures })
-}
+  return res.status(200).json({ departures });
+};
 
 const show = async (req, res) => {
   const { id } = req.params;
@@ -32,21 +34,28 @@ const show = async (req, res) => {
     include: [
       {
         model: Carrying,
-        as: 'departureCarrying'
+        as: "departureCarrying",
       },
       {
         model: Customer,
-        as: 'departureCustomer'
+        as: "departureCustomer",
       },
       {
         model: Receipt,
-        as: 'departureReceipt'
-      }
-    ]
-  })
+        as: "departureReceipt",
+        include: [
+          {
+            model: Item,
+            as: "receiptItem",
+            include: [{ model: Product, as: "itemProduct" }],
+          },
+        ],
+      },
+    ],
+  });
 
-  return res.status(200).json({ departure })
-}
+  return res.status(200).json({ departure });
+};
 
 const create = async (req, res) => {
   try {
@@ -56,10 +65,10 @@ const create = async (req, res) => {
       transport,
       carryingId,
       customerId,
-      receiptId
+      receiptId,
     } = req.body;
 
-    var newDepartureDate = departureDate.split('/').reverse().join('-')
+    var newDepartureDate = departureDate.split("/").reverse().join("-");
 
     await Departure.create({
       departureDate: newDepartureDate,
@@ -67,20 +76,22 @@ const create = async (req, res) => {
       transport,
       carryingId,
       customerId,
-      receiptId
-    })
+      receiptId,
+    });
 
-    await Receipt.update({
-      departureDate: newDepartureDate,
-    }, { where: { id: receiptId } })
+    await Receipt.update(
+      {
+        departureDate: newDepartureDate,
+      },
+      { where: { id: receiptId } }
+    );
 
-    return res.status(201).json({ success: "Departure created successfully!" })
-
+    return res.status(201).json({ success: "Departure created successfully!" });
   } catch (err) {
-    console.error(err.message)
-    return res.status(400).json({ error: "Failed to create Departure!" })
+    console.error(err.message);
+    return res.status(400).json({ error: "Failed to create Departure!" });
   }
-}
+};
 
 const update = async (req, res) => {
   try {
@@ -91,31 +102,36 @@ const update = async (req, res) => {
       transport,
       carryingId,
       customerId,
-      receiptId
+      receiptId,
     } = req.body;
 
-    var newDepartureDate = departureDate.split('/').reverse().join('-')
+    var newDepartureDate = departureDate.split("/").reverse().join("-");
 
-    await Departure.update({
-      departureDate: newDepartureDate,
-      total,
-      transport,
-      carryingId,
-      customerId,
-      receiptId
-    }, { where: { id } })
+    await Departure.update(
+      {
+        departureDate: newDepartureDate,
+        total,
+        transport,
+        carryingId,
+        customerId,
+        receiptId,
+      },
+      { where: { id } }
+    );
 
-    await Receipt.update({
-      departureDate: newDepartureDate,
-    }, { where: { id: receiptId } })
+    await Receipt.update(
+      {
+        departureDate: newDepartureDate,
+      },
+      { where: { id: receiptId } }
+    );
 
-    return res.status(200).json({ success: "Departure updated successfully!" })
-
+    return res.status(200).json({ success: "Departure updated successfully!" });
   } catch (err) {
-    console.error(err)
-    return res.status(400).json({ error: "Failed to update Departure!" })
+    console.error(err);
+    return res.status(400).json({ error: "Failed to update Departure!" });
   }
-}
+};
 
 const destroy = async (req, res) => {
   try {
@@ -124,18 +140,17 @@ const destroy = async (req, res) => {
 
     await departure.destroy();
 
-    return res.status(200).json({ success: "Departure deleted successfully!" })
-
+    return res.status(200).json({ success: "Departure deleted successfully!" });
   } catch (err) {
-    console.error(err.message)
-    return res.status(400).json({ error: "Failed to deleted Departure!" })
+    console.error(err.message);
+    return res.status(400).json({ error: "Failed to deleted Departure!" });
   }
-}
+};
 
 module.exports = {
   list,
   show,
   create,
   update,
-  destroy
-}
+  destroy,
+};

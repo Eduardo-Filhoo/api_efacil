@@ -3,7 +3,7 @@ GET http://localhost:5000/api/entries
 
 
 ### Single Entry
-GET http://localhost:5000/api/entry/:uuid
+GET http://localhost:5000/api/entry/764a71f0-1165-49cf-838f-a60d9a2d8b16
 
 
 ### Add New Entry
@@ -14,9 +14,9 @@ Content-Type: application/json
   "entryDate": "2022-11-10",
   "total": 5000.00,
   "transport": 0.00,
-  "carryingId": "aac027eb-c862-4e16-9a10-802534dd739d",
-  "providerId": "0745c735-cd3d-44c1-85b0-5d55adac3455",
-  "receiptId": "0bfbe931-219a-4713-982c-2789390f0baa"
+  "carryingId": "073d78d4-97dd-489a-8777-aef9958ac818",
+  "providerId": "cb5bad40-7ec6-44ea-884a-e9977217ac73",
+  "receiptId": "ef58de77-26d7-4d30-8810-e3847b914409"
 }
 
 
